@@ -13,5 +13,6 @@ namespace Questionnaire.Entity
         
         public string Title { get; set; }
         public ICollection<Question> Questions { get; set; }
+        public ICollection<Questionnaire_> Questionnaires { get; set; }
     }
 }

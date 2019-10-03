@@ -1,10 +1,6 @@
 ﻿using Questionnaire.Entity;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Questionnaire.Database
 {
@@ -17,5 +13,6 @@ namespace Questionnaire.Database
         public DbSet<Answer> AnswersDb { get; set; }
         public DbSet<Question> QuestionsDb { get; set; }
         public DbSet<Theme> ThemesDb { get; set; }
+        public DbSet<Questionnaire_> QuestionnairesDb { get; set; }
     }
 }

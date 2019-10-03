@@ -32,18 +32,14 @@
         {
             <div class="form-inline">
                 <input name="QuestionIDs" type="text" value="@Model.Questions.ElementAt(i).QuestionValue" />
-                @if ( Model.Theme.Questions.Where(x=>x.QuestionID==Model.Questions.ElementAt(i).QuestionID).Count()>0)
+                @if (Model.Theme.Questions.Where(x => x.QuestionID == Model.Questions.ElementAt(i).QuestionID).Count() > 0)
                 {
                     <input name="CheckedQuestionIDs" type="checkbox" value="@Model.Questions.ElementAt(i).QuestionID" checked />
-
                 }
                 else
                 {
                     <input name="CheckedQuestionIDs" type="checkbox" value="@Model.Questions.ElementAt(i).QuestionID" />
-
-
                 }
-
             </div>
         }
 

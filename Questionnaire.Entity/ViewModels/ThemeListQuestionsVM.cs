@@ -8,8 +8,8 @@ namespace Questionnaire.Entity.ViewModels
 {
     public class ThemeListQuestionsVM
     {
-        public List<Question> Questions { get; set; } = new List<Question>();
         public Theme Theme { get; set; }
+        public List<Question> Questions { get; set; } = new List<Question>();
         public List<int> CheckedQuestionIDs { get; set ;} = new List<int>();
     }
 }

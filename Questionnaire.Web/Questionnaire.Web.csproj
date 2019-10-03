@@ -171,6 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\QuestionnaireController.cs" />
     <Compile Include="Controllers\ThemeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -247,6 +248,11 @@
     <Content Include="Views\Theme\Details.cshtml" />
     <Content Include="Views\Theme\Edit.cshtml" />
     <Content Include="Views\Theme\Index.cshtml" />
+    <Content Include="Views\Questionnaire\Create.cshtml" />
+    <Content Include="Views\Questionnaire\Delete.cshtml" />
+    <Content Include="Views\Questionnaire\Details.cshtml" />
+    <Content Include="Views\Questionnaire\Edit.cshtml" />
+    <Content Include="Views\Questionnaire\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

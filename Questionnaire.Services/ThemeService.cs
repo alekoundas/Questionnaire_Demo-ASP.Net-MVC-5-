@@ -1,13 +1,10 @@
 ﻿using Questionnaire.Database;
 using Questionnaire.Entity;
 using Questionnaire.Entity.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Questionnaire.Services
 {
@@ -64,14 +61,6 @@ namespace Questionnaire.Services
 
 
         ////             Add | Save | Create                \\
-        //public void CreateQuestion(Question question)
-        //{
-        //    using (var db = new QuestionnaireDbContext())
-        //    {
-        //        db.QuestionsDb.Add(question);
-        //        db.SaveChanges();
-        //    }
-        //}
         public void CreateTheme(ThemeListQuestionsVM ViewModel)
         {
             using (var db = new QuestionnaireDbContext())
