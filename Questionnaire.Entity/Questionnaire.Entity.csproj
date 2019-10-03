@@ -48,6 +48,7 @@
     <Compile Include="Questionnaire.cs" />
     <Compile Include="Theme.cs" />
     <Compile Include="ViewModels\QuestionAnswersVM.cs" />
+    <Compile Include="ViewModels\ThemeListQuestionsVM.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

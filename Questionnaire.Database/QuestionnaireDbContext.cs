@@ -16,5 +16,6 @@ namespace Questionnaire.Database
         }
         public DbSet<Answer> AnswersDb { get; set; }
         public DbSet<Question> QuestionsDb { get; set; }
+        public DbSet<Theme> ThemesDb { get; set; }
     }
 }

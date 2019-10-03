@@ -14,110 +14,109 @@ using Questionnaire.Services;
 
 namespace Questionnaire.Web.Controllers
 {
-    public class QuestionController : Controller
+    public class ThemeController : Controller
     {
-        QuestionService QuestionServ = new QuestionService();
         private QuestionnaireDbContext db = new QuestionnaireDbContext();
+        private ThemeService ThemeServ = new ThemeService();
+        private QuestionService QuestionServ = new QuestionService();
 
-        // GET: Question
+        // GET: Theme
         public ActionResult Index()
         {
-            return View(QuestionServ.GetQuestions());
+            return View(db.ThemesDb.ToList());
         }
 
-        // GET: Question/Details/5
+        // GET: Theme/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = QuestionServ.GetQuestion(id);
-            if (question == null)
+            Theme theme = db.ThemesDb.Find(id);
+            if (theme == null)
             {
                 return HttpNotFound();
             }
-            return View(question);
+            return View(theme);
         }
 
-        // GET: Question/Create
+        // GET: Theme/Create
         public ActionResult Create()
         {
-            return View();
+            return View(ThemeServ.GetThemesVM());
         }
 
-        // POST: Question/Create
+        // POST: Theme/Create
+ 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( QuestionAnswersVM Obj)
+        public ActionResult Create(ThemeListQuestionsVM ViewModel)
         {
+            //ModelState.Clear();
             if (ModelState.IsValid)
             {
-                QuestionServ.CreateQuestion(Obj);
+                ThemeServ.CreateTheme(ViewModel);
                 return RedirectToAction("Index");
             }
 
-            return View(Obj.Question);
+            return View(ViewModel);
         }
 
-        // GET: Question/Edit/5
+        // GET: Theme/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction("Index");
-
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QuestionAnswersVM question = new QuestionAnswersVM();
-            question =   QuestionServ.GetQuestionViewModel(id);
-            Debug.WriteLine("AnswerCount:" + question.Question.Answers.Count);
-
-            if (question == null)
+            ThemeListQuestionsVM ViewModel = ThemeServ.GetThemeVM(id);
+            ViewModel.Questions = QuestionServ.GetQuestions();
+            if (ViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(question);
+            return View(ViewModel);
         }
 
-        // POST: Question/Edit/5        
+        // POST: Theme/Edit/5       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Question question, List<string> lista,string correctPossition)
+        public ActionResult Edit(ThemeListQuestionsVM ViewModel)
         {
             if (ModelState.IsValid)
             {
-                QuestionServ.EditQuestion(question,lista,correctPossition);
-
+                ThemeServ.EditQuestion(ViewModel);
                 return RedirectToAction("Index");
             }
-            return View(question);
+            return View(ViewModel);
         }
 
-
-
-        // GET: Question/Delete/5
+        // GET: Theme/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = QuestionServ.GetQuestion(id);
-            if (question == null)
+            Theme theme = db.ThemesDb.Find(id);
+            if (theme == null)
             {
                 return HttpNotFound();
             }
-            return View(question);
+            return View(theme);
         }
 
-        // POST: Question/Delete/5
+        // POST: Theme/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            QuestionServ.DeleteQuestion(id);            
+            Theme theme = db.ThemesDb.Find(id);
+            db.ThemesDb.Remove(theme);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }
